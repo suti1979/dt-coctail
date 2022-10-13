@@ -1,3 +1,4 @@
+import { useState } from "react"
 import useFetch from "../customHooks/useFetch"
 import { Coctail } from "./Coctail"
 
@@ -11,18 +12,21 @@ export interface ICoctailData {
 }
 
 export default function App() {
-  const { data, error } = useFetch<ICoctailData>(FETCH_URL)
+  const { data:coctails, error } = useFetch<ICoctailData>(FETCH_URL)
+  const [selected, setSelected] = useState("ABC")
 
   if (error) return <p>There is an error fetching data from API... sorry.</p>
-  if (!data) return <p>Loading...</p>
+  if (!coctails) return <p>Loading...</p>
 
   return (
     <div>
       <h3>Welcome to</h3>
       <h1>Digital Mixers</h1>
-      {Object.values(data).map((coctail) => (
-        <Coctail key={coctail.name} coctail={coctail} />
-      ))}
+      <div className="container-grid">
+        {Object.values(coctails).map((coctail) => (
+          <Coctail key={coctail.name} coctail={coctail} selected={selected}/>
+        ))}
+      </div>
     </div>
   )
 }
