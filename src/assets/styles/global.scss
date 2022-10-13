@@ -1,0 +1,79 @@
+body {
+  background-color: #f5f5f5;
+}
+
+h1 {
+  font-family: "Futura";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 100%;
+  /* or 72px */
+  text-align: center;
+  color: #000000;
+}
+
+h3 {
+  font-family: "Futura";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 150%;
+  /* or 36px */
+  text-align: center;
+
+  color: #000000;
+}
+
+.coctail {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 150%;
+  /* identical to box height, or 22px */
+
+  color: #000000;
+
+  &__detail {
+    font-size: 13px;
+    line-height: 130%;
+  }
+
+  &__big {
+    font-size: 24px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 310px;
+  height: 341px;
+
+  /* For meget skyggen */
+  filter: drop-shadow(0px 33px 60px rgba(41, 40, 98, 0.08))
+    drop-shadow(0px 16.7062px 26.1562px rgba(41, 40, 98, 0.054))
+    drop-shadow(0px 6.6px 9.75px rgba(41, 40, 98, 0.04))
+    drop-shadow(0px 1.44375px 3.46875px rgba(41, 40, 98, 0.026));
+  border-radius: 4px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+.close {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 611px;
+  top: 1px;
+
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0px 0px 0px 4px;
+}
