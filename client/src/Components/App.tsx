@@ -12,8 +12,12 @@ export interface ICoctailData {
 }
 
 export default function App() {
-  const { data:coctails, error } = useFetch<ICoctailData>(FETCH_URL)
-  const [selected, setSelected] = useState("ABC")
+  const { data: coctails, error } = useFetch<ICoctailData>(FETCH_URL)
+  const [selected, setSelected] = useState("Affair")
+
+  const handleClick = () => {
+    console.log("cl")
+  }
 
   if (error) return <p>There is an error fetching data from API... sorry.</p>
   if (!coctails) return <p>Loading...</p>
@@ -24,7 +28,7 @@ export default function App() {
       <h1>Digital Mixers</h1>
       <div className="container-grid">
         {Object.values(coctails).map((coctail) => (
-          <Coctail key={coctail.name} coctail={coctail} selected={selected}/>
+          <Coctail key={coctail.name} coctail={coctail} selected={selected} onClick={handleClick}/>
         ))}
       </div>
     </div>

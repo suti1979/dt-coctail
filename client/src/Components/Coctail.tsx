@@ -1,14 +1,27 @@
-//import { ICoctailData } from './App'
+import { ICoctailData } from "./App"
 
-export const Coctail = ({ coctail, selected }: any) => {
-  const addSelectedClass = selected === coctail.name ? "selected" : ""
-  
+export const Coctail = ({ coctail, selected }: ICoctailData | any) => {
+  const selectedClass = selected === coctail.name ? "selected" : ""
+
   return (
-    <div className={`card ${addSelectedClass}`}>
+    <div className={`card ${selectedClass}`}>
       <img src={coctail.thumbnail} alt="coctail" />
       <div className="coctail">
         <div>{coctail.name}</div>
-        <span className="coctail__detail coctail__two-lines">{coctail.instructions}</span>
+        <div className="coctail__detail coctail__two-lines">
+          {coctail.instructions}
+
+          {selectedClass && (
+            <>
+              <p>Ingerdients</p>
+              <ul>
+                {coctail.ingredients.map((ingerdient: string, i: number) => (
+                  <li key={i}>{ingerdient}</li>
+                ))}
+              </ul>
+            </>
+          )}
+        </div>
       </div>
     </div>
   )

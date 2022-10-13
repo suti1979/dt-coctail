@@ -1,0 +1,92 @@
+.coctail {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 150%;
+  padding: 16px 16px 24px;
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  color: #000000;
+
+  &__detail {
+    font-size: 13px;
+    line-height: 130%;
+  }
+
+  &__big {
+    font-size: 24px;
+  }
+
+  &__two-lines {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+
+img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  filter: drop-shadow(0px 33px 60px rgba(41, 40, 98, 0.08))
+    drop-shadow(0px 16.7062px 26.1562px rgba(41, 40, 98, 0.054))
+    drop-shadow(0px 6.6px 9.75px rgba(41, 40, 98, 0.04))
+    drop-shadow(0px 1.44375px 3.46875px rgba(41, 40, 98, 0.026));
+  border-radius: 4px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  border-radius: 4px;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 309px);
+  grid-template-rows: repeat(2, 340px);
+  gap: 16px;
+  justify-content: center;
+}
+
+.selected {
+  grid-row: 1 / 3;
+  grid-column: 3 / 5;
+}
+
+.selected .coctail {
+  font-size: 24px;
+}
+
+.selected img {
+  height: 339px;
+}
+
+.selected .coctail__detail {
+  font-size: 16px;
+}
+
+.selected .coctail__two-lines {
+  display: block;
+}
+
+.btn-close {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  left: 611px;
+  top: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 0px 0px 0px 4px;
+}
