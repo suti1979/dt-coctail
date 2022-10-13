@@ -1,10 +1,18 @@
+import { useState } from "react"
 import { ICoctailData } from "./App"
 
-export const Coctail = ({ coctail, selected }: ICoctailData | any) => {
-  const selectedClass = selected === coctail.name ? "selected" : ""
+export const Coctail = ({ coctail, setSelected, selected }: ICoctailData | any) => {
+  
+   
+
+   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+     setSelected(event.currentTarget.id)
+   }
+
+   const selectedClass = selected === coctail.name ? "selected" : ""
 
   return (
-    <div className={`card ${selectedClass}`}>
+    <div className={`card ${selectedClass}`} onClick={handleClick} id={coctail.name}>
       <img src={coctail.thumbnail} alt="coctail" />
       <div className="coctail">
         <div>{coctail.name}</div>
