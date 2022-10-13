@@ -34,8 +34,7 @@ router.get("/coctail", (_: Request, respose: Response) => {
 
 const getIngredients = (data) => {
   const arr = []
-  //console.log(data["strIngredient"].length)
-  for (let i = 1; i < 15; i++) {
+  for (let i = 1; i < 10; i++) {
     if (data["strIngredient" + i] != null) arr.push(data["strIngredient" + i])
     else break
   }

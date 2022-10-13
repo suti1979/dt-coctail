@@ -1,8 +1,8 @@
 ### Digital Thinkers Coctail Challange
 
 ## Install & Start
-- ./client/ -> npm i -> npm start 
 - ./server/ -> npm i -> npm start (or nodemon)
+- ./client/ -> npm i -> npm start 
 
 ## Default ports
 - client:3000
