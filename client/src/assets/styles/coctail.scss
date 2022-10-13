@@ -1,3 +1,13 @@
+// i know missing some responsivenessssss
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 309px);
+  grid-template-rows: repeat(2, 340px);
+  gap: 16px;
+  justify-content: center;
+}
+
+
 .coctail {
   font-family: "Inter";
   font-style: normal;
@@ -50,14 +60,7 @@ img {
   order: 0;
   flex-grow: 1;
   border-radius: 4px;
-}
-
-.container-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 309px);
-  grid-template-rows: repeat(2, 340px);
-  gap: 16px;
-  justify-content: center;
+  cursor: pointer;
 }
 
 .selected {
@@ -79,6 +82,10 @@ img {
 
 .selected .coctail__two-lines {
   display: block;
+}
+
+.selected:hover {
+    background-color: red;
 }
 
 .btn-close {

@@ -20,12 +20,26 @@ export default function App() {
 
   return (
     <div>
-      <h3>Welcome to</h3>
-      <h1>Digital Mixers</h1>
+      {!selected ? (
+        <>
+          <h3>Welcome to</h3>
+          <h1>Digital Mixers</h1>
+        </>
+      ) : (
+        <>
+          <h3>You have selected</h3>
+          <h1>{selected}</h1>
+        </>
+      )}
       <div className="container-grid">
         {Object.values(coctails).map((coctail) => (
-          // i now... set down setter is an ugly solution... fix it later
-          <Coctail key={coctail.name} coctail={coctail} setSelected={setSelected} selected={selected} />
+          // i know... set down setter is an ugly solution... fix it later
+          <Coctail
+            key={coctail.name}
+            coctail={coctail}
+            setSelected={setSelected}
+            selected={selected}
+          />
         ))}
       </div>
     </div>
