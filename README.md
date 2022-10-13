@@ -1,4 +1,4 @@
-### Starter React Node TS fullstack app
+### Digital Thinkers Coctail Challange
 
 ## Install & Start
 - ./client/ -> npm i -> npm start 

@@ -2,7 +2,7 @@ import axios from "axios"
 import express, { Request, Response } from "express"
 const router = express.Router()
 
-interface coctailData {
+interface ICoctailData {
   name: string
   instructions: string
   thumbnail: string
@@ -18,7 +18,7 @@ router.get("/coctail", (_: Request, respose: Response) => {
       const data = []
       const dataLength = res.data.drinks.length > 8 ? 8 : res.data.drinks.length
       for (let i = 0; i < dataLength; i++) {
-        const parseData:coctailData = {
+        const parseData: ICoctailData = {
           name: res.data.drinks[i].strDrink,
           instructions: res.data.drinks[i].strInstructions,
           thumbnail: res.data.drinks[i].strDrinkThumb,
@@ -34,6 +34,7 @@ router.get("/coctail", (_: Request, respose: Response) => {
 
 const getIngredients = (data) => {
   const arr = []
+  //console.log(data["strIngredient"].length)
   for (let i = 1; i < 15; i++) {
     if (data["strIngredient" + i] != null) arr.push(data["strIngredient" + i])
     else break
