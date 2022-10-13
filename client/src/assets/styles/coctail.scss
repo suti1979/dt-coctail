@@ -7,7 +7,6 @@
   justify-content: center;
 }
 
-
 .coctail {
   font-family: "Inter";
   font-style: normal;
@@ -49,6 +48,7 @@ img {
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
+  position: relative;
 
   filter: drop-shadow(0px 33px 60px rgba(41, 40, 98, 0.08))
     drop-shadow(0px 16.7062px 26.1562px rgba(41, 40, 98, 0.054))
@@ -84,16 +84,16 @@ img {
   display: block;
 }
 
-.selected:hover {
-    background-color: red;
-}
-
 .btn-close {
   position: absolute;
   width: 48px;
   height: 48px;
-  left: 611px;
+  right: 0px;
   top: 1px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 0px 0px 0px 4px;
+  background-image: url("../img/Vector.svg");
+  background-repeat: no-repeat;
+  background-size: 28px;
+  background-position: 10px;
 }
