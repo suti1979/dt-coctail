@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url(../fonts/Inter.ttf) format("truetype");
+}
+
+$font-inter: "Inter", sans-serif;
+
 // i know missing some responsivenessssss
 .container-grid {
   display: grid;
@@ -8,7 +15,7 @@
 }
 
 .coctail {
-  font-family: "Inter";
+  font-family: $font-inter;
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
