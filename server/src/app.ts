@@ -18,3 +18,5 @@ app.use(express.json())
 app.use(`${API_URL}/`, routes)
 
 app.listen(PORT, HOST, () => console.log(`Server started @ http://${HOST}:${PORT}`))
+
+export const server = app
