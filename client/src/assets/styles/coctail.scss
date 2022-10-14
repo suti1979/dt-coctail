@@ -7,8 +7,8 @@ $font-inter: "Inter", sans-serif;
 
 .container-grid {
   display: grid;
-  grid-template-columns: repeat(4, 309px);
-  grid-template-rows: repeat(2, 340px);
+  grid-template-columns: repeat(4, minmax(240px, 309px));
+  grid-template-rows: repeat(2, minmax(1fr, 309px));
   gap: 16px;
   justify-content: center;
 }
@@ -24,6 +24,7 @@ $font-inter: "Inter", sans-serif;
   width: 100%;
   height: 100%;
   color: #000000;
+  border-radius: 4px;
 
   &__detail {
     font-size: 13px;
@@ -60,7 +61,6 @@ img {
     drop-shadow(0px 16.7062px 26.1562px rgba(41, 40, 98, 0.054))
     drop-shadow(0px 6.6px 9.75px rgba(41, 40, 98, 0.04))
     drop-shadow(0px 1.44375px 3.46875px rgba(41, 40, 98, 0.026));
-  border-radius: 4px;
 
   flex: none;
   order: 0;
@@ -102,4 +102,25 @@ img {
   background-repeat: no-repeat;
   background-size: 28px;
   background-position: 10px;
+}
+@media screen and (max-width: 992px) {
+  .container-grid {
+    grid-template-columns: repeat(3, minmax(240px, 309px));
+    grid-template-rows: repeat(2, minmax(1fr, 309px));
+    gap: 8px;
+  }
+  .selected img {
+    height: 240px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .container-grid {
+    grid-template-columns: repeat(2, minmax(240px, 309px));
+    grid-template-rows: repeat(2, minmax(1fr, 309px));
+  }
+  .selected {
+    grid-row: 1 / 3;
+    grid-column: 2 / 4;
+  }
 }
