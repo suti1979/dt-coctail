@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCoctailCtx } from "../contexts/coctailCtx"
 import useFetch from "../customHooks/useFetch"
 import { Coctail } from "./Coctail"
 
@@ -13,14 +13,14 @@ export interface ICoctailData {
 
 export default function App() {
   const { data: coctails, error } = useFetch<ICoctailData>(FETCH_URL)
-  const [selected, setSelected] = useState("")
+  const coctailCtx = useCoctailCtx()
 
   if (error) return <p>There is an error fetching data from API... sorry.</p>
   if (!coctails) return <p>Loading...</p>
 
   return (
     <div>
-      {!selected ? (
+      {!coctailCtx?.selected ? (
         <>
           <h3>Welcome to</h3>
           <h1>Digital Mixers</h1>
@@ -28,18 +28,12 @@ export default function App() {
       ) : (
         <>
           <h3>You have selected</h3>
-          <h1>{selected}</h1>
+          <h1>{coctailCtx?.selected}</h1>
         </>
       )}
       <div className="container-grid">
         {Object.values(coctails).map((coctail) => (
-          // i know... set down setter is an ugly solution... fix it later
-          <Coctail
-            key={coctail.name}
-            coctail={coctail}
-            setSelected={setSelected}
-            selected={selected}
-          />
+          <Coctail key={coctail.name} {...coctail} />
         ))}
       </div>
     </div>

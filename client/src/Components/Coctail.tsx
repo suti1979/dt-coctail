@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react"
+import { useCoctailCtx } from "../contexts/coctailCtx"
 import { ICoctailData } from "./App"
 
-export const Coctail = ({ coctail, setSelected, selected }: ICoctailData | any) => {
-  // i still know... set down setter is an ugly solution... fix it later
+export const Coctail = (coctail: ICoctailData) => {
+  const [selectedClass, setSelectedClass] = useState("")
+  const { selected, setSelected } = useCoctailCtx()
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setSelected(event.currentTarget.id)
   }
@@ -11,7 +15,9 @@ export const Coctail = ({ coctail, setSelected, selected }: ICoctailData | any) 
     setSelected("")
   }
 
-  const selectedClass = selected === coctail.name ? "selected" : ""
+  useEffect(() => {
+    setSelectedClass(selected === coctail.name ? "selected" : "")
+  }, [selected, coctail.name])
 
   return (
     <div className={`card ${selectedClass}`} onClick={handleClick} id={coctail.name}>
@@ -21,19 +27,22 @@ export const Coctail = ({ coctail, setSelected, selected }: ICoctailData | any) 
         <div>{coctail.name}</div>
         <div className="coctail__detail coctail__two-lines">
           {coctail.instructions}
-          {/* probably better in it's own component */}
-          {selectedClass && (
-            <>
-              <p>Ingerdients</p>
-              <ul>
-                {coctail.ingredients.map((ingerdient: string, i: number) => (
-                  <li key={i}>{ingerdient}</li>
-                ))}
-              </ul>
-            </>
-          )}
+          {selectedClass && <Ingerdients {...coctail} />}
         </div>
       </div>
     </div>
+  )
+}
+
+const Ingerdients = (coctail: ICoctailData) => {
+  return (
+    <>
+      <p>Ingerdients</p>
+      <ul>
+        {coctail.ingredients.map((ingerdient: string, i: number) => (
+          <li key={i}>{ingerdient}</li>
+        ))}
+      </ul>
+    </>
   )
 }
