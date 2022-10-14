@@ -57,10 +57,13 @@ img {
   padding: 0px;
   position: relative;
 
-  filter: drop-shadow(0px 33px 60px rgba(41, 40, 98, 0.08))
-    drop-shadow(0px 16.7062px 26.1562px rgba(41, 40, 98, 0.054))
-    drop-shadow(0px 6.6px 9.75px rgba(41, 40, 98, 0.04))
-    drop-shadow(0px 1.44375px 3.46875px rgba(41, 40, 98, 0.026));
+  // not working properly on safary even with -webkit-filter...
+  // filter: drop-shadow(0px 33px 60px rgba(41, 40, 98, 0.08))
+  //   drop-shadow(0px 16.7062px 26.1562px rgba(41, 40, 98, 0.054))
+  //   drop-shadow(0px 6.6px 9.75px rgba(41, 40, 98, 0.04))
+  //   drop-shadow(0px 1.44375px 3.46875px rgba(41, 40, 98, 0.026));
+
+  box-shadow: 0px 33px 60px rgba(41, 40, 98, 0.18);
 
   flex: none;
   order: 0;

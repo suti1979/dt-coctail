@@ -27,7 +27,7 @@ export const Coctail = (coctail: ICoctailData) => {
         <div>{coctail.name}</div>
         <div className="coctail__detail coctail__two-lines">
           {coctail.instructions}
-          {selectedClass && <Ingerdients {...coctail} />}
+          {selectedClass && <Ingerdients {...coctail} />} 
         </div>
       </div>
     </div>
