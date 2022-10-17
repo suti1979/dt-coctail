@@ -70,6 +70,13 @@ img {
   flex-grow: 1;
   border-radius: 4px;
   cursor: pointer;
+   transition: transform .2s;
+}
+
+.card:hover {
+  -ms-transform: scale(1.022); 
+  -webkit-transform: scale(1.022); 
+  transform: scale(1.022); 
 }
 
 .selected {
@@ -82,7 +89,7 @@ img {
 }
 
 .selected img {
-  height: 339px;
+  height: 336px;
 }
 
 .selected .coctail__detail {
@@ -91,6 +98,10 @@ img {
 
 .selected .coctail__two-lines {
   display: block;
+}
+
+.selected:hover {
+  transform: none
 }
 
 .btn-close {

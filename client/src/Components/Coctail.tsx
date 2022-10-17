@@ -4,6 +4,7 @@ import { ICoctailData } from "./App"
 
 export const Coctail = (coctail: ICoctailData) => {
   const [selectedClass, setSelectedClass] = useState("")
+  const [showClose, setShowClose] = useState(false)
   const { selected, setSelected } = useCoctailCtx()
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -20,14 +21,20 @@ export const Coctail = (coctail: ICoctailData) => {
   }, [selected, coctail.name])
 
   return (
-    <div className={`card ${selectedClass}`} onClick={handleClick} id={coctail.name}>
-      {selectedClass && <div className="btn-close" onClick={handleClose}></div>}
+    <div
+      className={`card ${selectedClass}`}
+      onClick={handleClick}
+      id={coctail.name}
+      onMouseEnter={() => setShowClose(true)}
+      onMouseLeave={() => setShowClose(false)}
+    >
+      {selectedClass && showClose && <div className="btn-close" onClick={handleClose}></div>}
       <img src={coctail.thumbnail} alt="coctail" />
       <div className="coctail">
         <div>{coctail.name}</div>
         <div className="coctail__detail coctail__two-lines">
           {coctail.instructions}
-          {selectedClass && <Ingerdients {...coctail} />} 
+          {selectedClass && <Ingerdients {...coctail} />}
         </div>
       </div>
     </div>
