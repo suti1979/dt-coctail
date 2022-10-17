@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+
+  server:
+    container_name: server
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+  
+  client:
+    container_name: client
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile
+      args:
+        BACKEND_PORT: 4000
+    restart: always
+    depends_on:
+      - server
+    ports:
+      - "8000:80"
+    environment:
+      REACT_APP_API_URL: server
