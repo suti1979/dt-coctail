@@ -3,7 +3,7 @@ import cors from "cors"
 import routes from "./routes/route"
 
 const app: Express = express()
-const PORT: number = parseInt(process.env.HOST) || 4000
+const PORT: number = parseInt(process.env.PORT) || 4000
 const HOST: string = process.env.HOST || "127.0.0.1"
 const API_URL: string = process.env.PROD_API_URL || "/api"
 

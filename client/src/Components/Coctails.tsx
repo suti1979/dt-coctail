@@ -28,7 +28,7 @@ export const Coctails = (coctail: ICoctailData) => {
       id={coctail.name}
       onMouseEnter={() => setShowClose(true)}
       onMouseLeave={() => setShowClose(false)}
-      data-testid={`card-${coctail.name}`}
+      data-testid="card"
     >
       {selectedClass && showClose && <div className="btn-close" onClick={handleClose}></div>}
       <img src={coctail.thumbnail} alt="coctail" />

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { useCoctailCtx } from "../contexts/coctailCtx"
 import useFetch from "../customHooks/useFetch"
 import { Coctails } from "./Coctails"
