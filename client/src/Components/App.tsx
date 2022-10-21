@@ -3,7 +3,7 @@ import { useCoctailCtx } from "../contexts/coctailCtx"
 import useFetch from "../customHooks/useFetch"
 import { Coctails } from "./Coctails"
 
-const FETCH_URL = "http://localhost:4000/api/coctail"
+const FETCH_URL = "http://localhost:4000/api/coctails"
 
 export interface ICoctailData {
   name: string

@@ -11,7 +11,7 @@ interface ICoctailData {
 
 const API_URL: string = "http://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
 
-router.get("/coctail", (_: Request, respose: Response) => {
+router.get("/coctails", (_: Request, respose: Response) => {
   axios
     .get(API_URL)
     .then((res) => {
@@ -26,13 +26,15 @@ router.get("/coctail", (_: Request, respose: Response) => {
         }
         data.push(parseData)
       }
-
       respose.json(data)
     })
-    .catch((err) => console.error(err))
+    .catch((err) => {
+      console.error(err)
+      respose.sendStatus(500)
+    })
 })
 
-const getIngredients = (data) => {
+const getIngredients = (data:string[]) => {
   const arr = []
   for (let i = 1; i < 10; i++) {
     if (data["strIngredient" + i] != null) arr.push(data["strIngredient" + i])
