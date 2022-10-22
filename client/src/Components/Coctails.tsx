@@ -10,6 +10,9 @@ export const Coctails = (coctail: ICoctailData) => {
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setSelected(event.currentTarget.id)
+    window.scroll({
+      top: 0,
+    })
   }
 
   const handleClose = (event: React.MouseEvent<HTMLElement>) => {
@@ -23,7 +26,7 @@ export const Coctails = (coctail: ICoctailData) => {
 
   return (
     <div
-      className={`card ${selectedClass}`}
+      className={`card shadow ${selectedClass}`}
       onClick={handleClick}
       id={coctail.name}
       onMouseEnter={() => setShowClose(true)}

@@ -38,7 +38,7 @@ export default function App() {
         </>
       )}
       <input
-        className="search"
+        className="search shadow"
         placeholder={"search coctail..."}
         type="text"
         onChange={handleSearch}

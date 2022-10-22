@@ -1,19 +1,18 @@
 @font-face {
-  font-family: 'Futura';
-  src: local('Futura Regular'), local('Futura-Regular'),
-      url('../fonts/FuturaLT.woff2') format('woff2'),
-      url('../fonts/FuturaLT.woff') format('woff'),
-      url('../fonts/FuturaLT.ttf') format('truetype');
+  font-family: "Futura";
+  src: local("Futura Regular"), local("Futura-Regular"),
+    url("../fonts/FuturaLT.woff2") format("woff2"), url("../fonts/FuturaLT.woff") format("woff"),
+    url("../fonts/FuturaLT.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Futura LT';
-  src: url('../fonts/FuturaLT-Bold.eot');
-  src: local('Futura LT Bold'), local('FuturaLT-Bold'),
-      url('../fonts/FuturaLT-Bold.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/FuturaLT-Bold.woff2') format('woff2'),
-      url('../fonts/FuturaLT-Bold.woff') format('woff'),
-      url('../fonts/FuturaLT-Bold.ttf') format('truetype');
+  font-family: "Futura LT";
+  src: url("../fonts/FuturaLT-Bold.eot");
+  src: local("Futura LT Bold"), local("FuturaLT-Bold"),
+    url("../fonts/FuturaLT-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/FuturaLT-Bold.woff2") format("woff2"),
+    url("../fonts/FuturaLT-Bold.woff") format("woff"),
+    url("../fonts/FuturaLT-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
@@ -25,8 +24,15 @@ $font-futura-lt: "Futura LT", sans-serif;
   box-sizing: border-box;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   background-color: #f5f5f5;
+  margin: 0;
 }
 
 h1 {
@@ -37,6 +43,7 @@ h1 {
   line-height: 100%;
   color: #000000;
   padding-bottom: 24px;
+  text-align: center;
 }
 
 h3 {
