@@ -13,10 +13,16 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
+
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(`${API_URL}/`, routes)
 
 const server = app.listen(PORT, HOST, () => console.log(`Server started @ http://${HOST}:${PORT}`))
+
+process.on("SIGINT", () => {
+  console.info("Interrupted")
+  process.exit(0)
+})
 
 export default server

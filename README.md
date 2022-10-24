@@ -1,11 +1,19 @@
-### Digital Thinkers Coctail Challange
+## Digital Thinkers Coctail Challange
 
-## Install & Start
+### Default ports
+- client:3000
+- server:4000
+
+### Docker run
+- docker-compose up
+
+### Manual run:
 - ./server/ -> npm i -> npm start (or nodemon)
 - ./client/ -> npm i -> npm start 
 
-## Default ports
-- client:3000
-- server:4000
+### Testing
+- server: npm test
+- client: npm test
+
 
 

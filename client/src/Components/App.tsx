@@ -3,7 +3,8 @@ import { useCoctailCtx } from "../contexts/coctailCtx"
 import useFetch from "../customHooks/useFetch"
 import { Coctails } from "./Coctails"
 
-const FETCH_URL = "http://localhost:4000/api/coctails"
+const API_URL = process.env.REACT_APP_API_URL || "http://127.0.0.1:4000"
+const FETCH_URL = `${API_URL}/api/coctails`
 
 export interface ICoctailData {
   name: string
