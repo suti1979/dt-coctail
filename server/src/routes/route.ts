@@ -34,6 +34,10 @@ router.get("/coctails", (_: Request, respose: Response) => {
     })
 })
 
+router.get("*", (_: Request, respose: Response) => {
+  respose.send("These are not the droids you're looking for...")
+})
+
 const getIngredients = (data:string[]) => {
   const arr = []
   for (let i = 1; i < 10; i++) {
