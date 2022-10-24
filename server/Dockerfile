@@ -1,13 +1,12 @@
 FROM node:16-alpine
 
-RUN mkdir /app
-WORKDIR /app
+RUN mkdir /server
+WORKDIR /server
 COPY . .
 
 RUN npm install
-RUN npm run build
-
+RUN npx tsc
 
 EXPOSE 4000
 
-CMD ["npm", "start"]
+CMD ["node", "dist/app.js"]
