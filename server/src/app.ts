@@ -17,6 +17,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(`${API_URL}/`, routes)
 
-app.listen(PORT, HOST, () => console.log(`Server started @ http://${HOST}:${PORT}`))
+const server = app.listen(PORT, HOST, () => console.log(`Server started @ http://${HOST}:${PORT}`))
 
-export default app
+export default server
