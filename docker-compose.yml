@@ -2,6 +2,7 @@ version: "3.9"
 services:
 
   server:
+    image: suti1979/dt-coctails
     container_name: server
     build:
       context: ./server
@@ -14,6 +15,7 @@ services:
       HOST: server
   
   client:
+    image: suti1979/dt-coctails
     container_name: client
     build:
       context: ./client
@@ -25,4 +27,5 @@ services:
       - "3000:80"
     environment:
       REACT_APP_API_URL: server
+  
 
