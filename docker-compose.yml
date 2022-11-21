@@ -2,7 +2,7 @@ version: "3.9"
 services:
 
   server:
-    image: suti1979/dt-coctails
+    image: suti1979/dt-coctails-backend
     container_name: server
     build:
       context: ./server
