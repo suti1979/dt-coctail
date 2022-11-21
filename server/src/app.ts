@@ -1,6 +1,6 @@
 import express, { Express } from "express"
 import cors from "cors"
-import routes from "./routes/route"
+import routes from "./routes/routes"
 
 const app: Express = express()
 const PORT: number = parseInt(process.env.PORT) || 4000
