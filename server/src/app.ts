@@ -1,6 +1,7 @@
 import express, { Express } from "express"
 import cors from "cors"
 import routes from "./routes/routes"
+import { getUnknownRoute } from "./controller/getCoctails"
 
 const app: Express = express()
 const PORT: number = parseInt(process.env.PORT) || 4000
@@ -17,6 +18,7 @@ app.use(cors(corsOptions))
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(`${API_URL}/`, routes)
+app.get("*", getUnknownRoute)
 
 const server = app.listen(PORT, HOST, () => console.log(`Server started @ http://${HOST}:${PORT}`))
 

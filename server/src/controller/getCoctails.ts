@@ -1,5 +1,11 @@
-import axios from "axios"
 import { Request, Response } from "express"
+
+const _importDynamic = new Function("modulePath", "return import(modulePath)")
+
+export const fetch = async function (...args: any) {
+  const { default: fetch } = await _importDynamic("node-fetch")
+  return fetch(...args)
+}
 
 interface ICoctailData {
   name: string
@@ -8,19 +14,31 @@ interface ICoctailData {
   ingredients: string[]
 }
 
-const API_URL: string = "http://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
+interface IDrink {
+  strDrink: string
+  strInstructions: string
+  strDrinkThumb: string
+}
+
+interface IApiResponse {
+  drinks: [IDrink]
+}
+
+const API_URL: string = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
 
 export const getCoctails = async (_: Request, respose: Response) => {
   try {
-    const res = await axios.get(API_URL)
+    const api = await fetch(API_URL)
+    const res: IApiResponse = await api.json()
+
     const data: ICoctailData[] = []
-    const dataLength = res.data.drinks.length > 8 ? 8 : res.data.drinks.length
+    const dataLength = res.drinks.length > 8 ? 8 : res.drinks.length
     for (let i = 0; i < dataLength; i++) {
       const parseData: ICoctailData = {
-        name: res.data.drinks[i].strDrink,
-        instructions: res.data.drinks[i].strInstructions,
-        thumbnail: res.data.drinks[i].strDrinkThumb,
-        ingredients: getIngredients(res.data.drinks[i]),
+        name: res.drinks[i].strDrink,
+        instructions: res.drinks[i].strInstructions,
+        thumbnail: res.drinks[i].strDrinkThumb,
+        ingredients: getIngredients(res.drinks[i]),
       }
       data.push(parseData)
     }
@@ -32,7 +50,7 @@ export const getCoctails = async (_: Request, respose: Response) => {
   }
 }
 
-const getIngredients = (data: string[]) => {
+const getIngredients = (data: IDrink) => {
   const arr = []
   for (let i = 1; i < 15; i++) {
     if (data["strIngredient" + i] != null) arr.push(data["strIngredient" + i])
