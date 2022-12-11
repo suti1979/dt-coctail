@@ -7,6 +7,7 @@
     "start": "tsc && node dist/app.js",
     "lint": "eslint . --ext .ts",
     "test": "jest --detectOpenHandles",
+    "coverage": "jest --coverage",
     "pretest": "cross-env NODE_ENV=test npm run migrate:reset",
     "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
     "migrate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"

@@ -1,4 +1,3 @@
-
 import { describe, expect, test } from "@jest/globals"
 import request from "supertest"
 
@@ -9,6 +8,11 @@ describe("Test app.ts", () => {
     const res = await request(app).get("/api/coctails")
     expect(res.statusCode).toBe(200)
   })
+
+  test("Server fails", async () => {
+    const res = await request(app).get("")
+    expect(res.statusCode).toBe(404)
+  })
 })
 
 describe("Test response", () => {
@@ -17,6 +21,3 @@ describe("Test response", () => {
     expect(res.body).toHaveLength(8)
   })
 })
-
-
-

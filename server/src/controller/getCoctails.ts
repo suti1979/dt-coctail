@@ -24,6 +24,7 @@ export const getCoctails = async (_: Request, respose: Response) => {
       }
       data.push(parseData)
     }
+
     respose.json(data)
   } catch (err: unknown) {
     console.error(err)
