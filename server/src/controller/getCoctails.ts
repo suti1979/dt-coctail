@@ -25,29 +25,32 @@ interface IApiResponse {
 }
 
 const API_URL: string = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
+export const api = null
 
 export const getCoctails = async (_: Request, respose: Response) => {
   try {
     const api = await fetch(API_URL)
     const res: IApiResponse = await api.json()
-
-    const data: ICoctailData[] = []
-    const dataLength = res.drinks.length > 8 ? 8 : res.drinks.length
-    for (let i = 0; i < dataLength; i++) {
-      const parseData: ICoctailData = {
-        name: res.drinks[i].strDrink,
-        instructions: res.drinks[i].strInstructions,
-        thumbnail: res.drinks[i].strDrinkThumb,
-        ingredients: getIngredients(res.drinks[i]),
-      }
-      data.push(parseData)
-    }
-
+    const data = parseResponse(res)
     respose.json(data)
   } catch (err: unknown) {
-    console.error(err)
     respose.send({ error: "Cannot get data...sorry: ", err })
   }
+}
+
+const parseResponse = (res: IApiResponse) => {
+  const data: ICoctailData[] = []
+  const dataLength = res.drinks.length > 8 ? 8 : res.drinks.length
+  for (let i = 0; i < dataLength; i++) {
+    const parseData: ICoctailData = {
+      name: res.drinks[i].strDrink,
+      instructions: res.drinks[i].strInstructions,
+      thumbnail: res.drinks[i].strDrinkThumb,
+      ingredients: getIngredients(res.drinks[i]),
+    }
+    data.push(parseData)
+  }
+  return data
 }
 
 const getIngredients = (data: IDrink) => {
