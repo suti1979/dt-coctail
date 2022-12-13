@@ -1,16 +1,6 @@
 import request from "supertest"
 import app from "../app"
 
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve({ test: 100 }),
-  })
-) as jest.Mock
-
-// beforeEach(() => {
-//   fetch.mockClear()
-// })
-
 describe("Test app.ts", () => {
   test("GET /", (done) => {
     request(app)
@@ -41,9 +31,18 @@ describe("Test coctail endpoint", () => {
       })
   })
 
-  // test("GET /api/coctails mock json", async () => {
-    
-  //   const res = await request(app).get("/api/coctails") //S
-  //   expect(res).toBe("These")
-  // })
+  test("GET /api/coctails REAL API json", async () => {
+    const res = await request(app).get("/api/coctails")
+    expect(res.body.length).toBe(8)
+  })
 })
+
+// global.fetch = jest.fn(() =>
+//   Promise.resolve({
+//     json: () => Promise.resolve({ test: 100 }),
+//   })
+// ) as jest.Mock
+
+// beforeEach(() => {
+//   fetch.mockClear()
+// })
