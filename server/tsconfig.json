@@ -8,6 +8,7 @@
     "outDir": "dist"
   },
   "lib": ["es2015"],
-  "include": ["src/**/*", "index.d.ts", "src/__test__"],
+  "include": ["src/**/*", "index.d.ts"],
+  "exclude": ["src/__test__", "node_modules"],
   "compileOnSave": false
 }

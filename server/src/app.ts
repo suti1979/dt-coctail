@@ -1,7 +1,7 @@
 import express, { Express } from "express"
 import cors from "cors"
 import routes from "./routes/routes"
-import { getUnknownRoute } from "./controller/getCoctails"
+import { getUnknownRoute } from "./controllers/getUnknownRoute"
 
 const app: Express = express()
 const PORT: number = parseInt(process.env.PORT) || 4000

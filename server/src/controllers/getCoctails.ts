@@ -1,12 +1,5 @@
 import { Request, Response } from "express"
 
-const _importDynamic = new Function("modulePath", "return import(modulePath)")
-
-export const fetch = async function (...args: any) {
-  const { default: fetch } = await _importDynamic("node-fetch")
-  return fetch(...args)
-}
-
 interface ICoctailData {
   name: string
   instructions: string
@@ -32,10 +25,10 @@ export const getCoctails = async (_: Request, respose: Response) => {
     const api = await fetch(API_URL)
     const res: IApiResponse = await api.json()
     const data = parseResponse(res)
-    respose.json(data)
-  } catch (err: unknown) {
-    respose.send({ error: "Cannot get data...sorry: ", err })
-  }
+    respose.json(data) //data
+   } catch (err: unknown) {
+     respose.send({ error: "Cannot get data...sorry: ", err })
+   }
 }
 
 const parseResponse = (res: IApiResponse) => {
@@ -62,6 +55,9 @@ const getIngredients = (data: IDrink) => {
   return arr
 }
 
-export const getUnknownRoute = (_: Request, respose: Response) => {
-  respose.send("These are not the droids you're looking for...")
-}
+// const _importDynamic = new Function("modulePath", "return import(modulePath)")
+
+// export const fetch = async function (...args: any) {
+//   const { default: fetch } = await _importDynamic("node-fetch")
+//   return fetch(...args)
+// }

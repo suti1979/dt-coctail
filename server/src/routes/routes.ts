@@ -1,6 +1,7 @@
-
 import express from "express"
-import { getCoctails, getUnknownRoute } from "../controller/getCoctails"
+import { getCoctails } from "../controllers/getCoctails"
+import { getUnknownRoute } from "../controllers/getUnknownRoute"
+
 const router = express.Router()
 
 router.get("/coctails", getCoctails)
