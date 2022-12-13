@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import axios from "axios"
 
 interface ICoctailData {
   name: string
@@ -20,15 +21,16 @@ interface IApiResponse {
 const API_URL: string = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a"
 export const api = null
 
-export const getCoctails = async (_: Request, respose: Response) => {
+export const getCoctails = async (_: Request, response: Response) => {
   try {
-    const api = await fetch(API_URL)
-    const res: IApiResponse = await api.json()
-    const data = parseResponse(res)
-    respose.json(data) //data
-   } catch (err: unknown) {
-     respose.send({ error: "Cannot get data...sorry: ", err })
-   }
+    const api = await axios.get(API_URL)
+    const res: IApiResponse = api.data
+    const parsedData = parseResponse(res)
+
+    response.status(200).json(parsedData)
+  } catch (err: unknown) {
+    response.send({ error: "Cannot get data...sorry: ", err })
+  }
 }
 
 const parseResponse = (res: IApiResponse) => {
