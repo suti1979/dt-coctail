@@ -5,7 +5,6 @@ import { ICoctailData } from "./App"
 export const Coctails = (coctail: ICoctailData) => {
   const [selectedClass, setSelectedClass] = useState("")
   const [showClose, setShowClose] = useState(false)
-
   const { selected, setSelected } = useCoctailCtx()
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

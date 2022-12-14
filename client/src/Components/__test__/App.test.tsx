@@ -11,8 +11,8 @@ describe("Main page functionality", () => {
 
   test("Have 1 mock data", async () => {
     render(<App />)
-    const CARD = await screen.findByTestId("card")
-    expect(CARD).toBeInTheDocument()
+    const card = await screen.findByTestId("card")
+    expect(card).toBeInTheDocument()
   })
 })
 
