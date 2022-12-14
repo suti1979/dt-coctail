@@ -10,7 +10,7 @@ export const Coctails = (coctail: ICoctailData) => {
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setSelected(event.currentTarget.id)
-    window.scroll({
+    window.scrollTo({
       top: 0,
     })
   }
@@ -33,7 +33,9 @@ export const Coctails = (coctail: ICoctailData) => {
       onMouseLeave={() => setShowClose(false)}
       data-testid="card"
     >
-      {selectedClass && showClose && <div className="btn-close" onClick={handleClose}></div>}
+      {selectedClass && showClose && (
+        <div className="btn-close" onClick={handleClose} data-testid="closebtn"></div>
+      )}
       <img src={coctail.thumbnail} alt="coctail" />
       <div className="coctail">
         <div>{coctail.name}</div>

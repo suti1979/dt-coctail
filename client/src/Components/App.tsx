@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { useCoctailCtx } from "../contexts/coctailCtx"
 import useFetch from "../customHooks/useFetch"
 import { Coctails } from "./Coctails"
@@ -14,11 +14,11 @@ export interface ICoctailData {
 }
 
 export default function App() {
-  const { data: coctails, error } = useFetch<ICoctailData>(FETCH_URL)
+  const { data: coctails, error } = useFetch<ICoctailData[]>(FETCH_URL)
   const [search, setSearch] = useState("")
   const coctailCtx = useCoctailCtx()
 
-  const handleSearch = (event: any) => {
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value)
   }
 
@@ -45,7 +45,7 @@ export default function App() {
         onChange={handleSearch}
       />
       <div className="container-grid">
-        {Object.values(coctails)
+        {coctails
           .filter((item) => item.name.toLowerCase().includes(search.toLowerCase()))
           .map((coctail) => (
             <Coctails key={coctail.name} {...coctail} />

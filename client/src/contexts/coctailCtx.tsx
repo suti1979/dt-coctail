@@ -2,19 +2,14 @@ import { createContext, ReactNode, useContext, useState } from "react"
 
 export interface ICoctailCtx {
   selected: string
-  setSelected: (_id: string) => void
-}
-
-const defaultCtxValues = {
-  selected: "",
-  setSelected: () => {},
+  setSelected: (value: React.SetStateAction<string>) => void
 }
 
 type Props = {
   children?: ReactNode
 }
 
-const CoctailContext = createContext<ICoctailCtx>(defaultCtxValues)
+const CoctailContext = createContext<ICoctailCtx>({} as ICoctailCtx)
 export const useCoctailCtx = () => useContext(CoctailContext)
 
 export default function CoctailProvider({ children }: Props) {
