@@ -14,8 +14,6 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-//app.use(cors())
-
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(`${API_URL}/`, routes)
@@ -23,9 +21,14 @@ app.get("*", getUnknownRoute)
 
 const server = app.listen(PORT, HOST, () => console.log(`Server started @ http://${HOST}:${PORT}`))
 
-process.on("SIGINT", () => {
-  console.info("Interrupted")
-  process.exit(0)
-})
+for (let signal of ["SIGTERM", "SIGINT"])
+  process.on(signal, () => {
+    console.info(`${signal} signal received.`)
+    console.log("Closing http server.")
+    server.close((err) => {
+      console.log("Http server closed.")
+      process.exit(err ? 1 : 0)
+    })
+  })
 
 export default server

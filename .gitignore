@@ -11,5 +11,6 @@ build
 .env
 
 coverage
+.nyc_output
 
 

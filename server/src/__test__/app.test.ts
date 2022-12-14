@@ -1,4 +1,4 @@
-import { describe, expect, test } from "@jest/globals"
+import { describe, expect, test, jest } from "@jest/globals"
 import request from "supertest"
 import app from "../app"
 
@@ -32,23 +32,17 @@ describe("Test coctail endpoint", () => {
       })
   })
 
-  // test("GET /api/coctails REAL API json", async () => {
-  //   const res = await request(app).get("/api/coctails")
-  //   expect(res.body.length).toBe(8)
-  // })
-
   //AXIOS REAL
-  // test("GET /api/coctails REAL API ", async () => {
-  //   const res = await request(app).get("/api/coctails")
-  //   expect(res.body.length).toBe(8)
-  // })
+  test("GET /api/coctails REAL API ", async () => {
+    const res = await request(app).get("/api/coctails")
+    expect(res.body.length).toBe(8)
+  })
 })
 
 
-
+// ** TEST fetch call for future reference:
 
 //import  "node-fetch"
-
 //     jest.mock("node-fetch", () =>
 //       jest.fn(() =>
 //         Promise.resolve({
@@ -62,7 +56,3 @@ describe("Test coctail endpoint", () => {
 //     json: async () => Promise.resolve({ test: 100 }),
 //   })
 // ) as jest.Mock
-
-// beforeEach(() => {
-//   jest.clearAllMocks()
-// })
